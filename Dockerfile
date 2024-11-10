@@ -17,13 +17,6 @@ RUN rm -f /usr/share/logstash/pipeline/logstash.conf
 COPY config/ /usr/share/logstash/config/
 COPY pipeline/ /usr/share/logstash/pipeline/
 
-# Ajusta as permissões para o usuário logstash
-RUN chown -R logstash:logstash /usr/share/logstash/config /usr/share/logstash/pipeline
-RUN chmod -R 755 /usr/share/logstash/config /usr/share/logstash/pipeline
-
-# Altera o usuário para logstash
-USER logstash
-
 # Exponha as portas necessárias
 EXPOSE 5044 9600
 

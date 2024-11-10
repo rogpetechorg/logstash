@@ -36,4 +36,3 @@ xpack.monitoring.elasticsearch.username: "${ELASTICSEARCH_USER:logstash_internal
 xpack.monitoring.elasticsearch.password: "${ELASTICSEARCH_PASSWORD}"
 
 ```
-

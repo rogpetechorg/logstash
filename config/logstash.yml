@@ -1,0 +1,6 @@
+http.host: "${LOGSTASH_HTTP_HOST:0.0.0.0}"
+node.name: "${LOGSTASH_NODE_NAME:logstash}"
+
+xpack.monitoring.elasticsearch.hosts: [ "${ELASTICSEARCH_HOST:http://elasticsearch:9200}" ]
+xpack.monitoring.elasticsearch.username: "${ELASTICSEARCH_USER:logstash_internal}"
+xpack.monitoring.elasticsearch.password: "${ELASTICSEARCH_PASSWORD}"

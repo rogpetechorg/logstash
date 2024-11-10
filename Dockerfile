@@ -7,15 +7,19 @@ USER root
 # Instala o vim
 RUN apt-get update && apt-get install -y vim && rm -rf /var/lib/apt/lists/*
 
-# Cria os diretórios para configuração, se necessário, e copia os arquivos
+# Cria os diretórios para configuração, se necessário
 RUN mkdir -p /usr/share/logstash/pipeline /usr/share/logstash/config
 
 # Remove o pipeline padrão, se existir
 RUN rm -f /usr/share/logstash/pipeline/logstash.conf
 
 # Copia os arquivos de configuração e pipeline para o container
-COPY --chown=logstash:logstash config/ /usr/share/logstash/config/
-COPY --chown=logstash:logstash pipeline/ /usr/share/logstash/pipeline/
+COPY config/ /usr/share/logstash/config/
+COPY pipeline/ /usr/share/logstash/pipeline/
+
+# Ajusta as permissões para o usuário logstash
+RUN chown -R logstash:logstash /usr/share/logstash/config /usr/share/logstash/pipeline
+RUN chmod -R 755 /usr/share/logstash/config /usr/share/logstash/pipeline
 
 # Altera o usuário para logstash
 USER logstash
